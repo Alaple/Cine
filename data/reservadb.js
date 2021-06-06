@@ -23,6 +23,24 @@ async function getReserva(id) {
     return reserva;
 }
 
+async function getReservaPorUsuario(id) {
+    const clientMongo = await connection.getConnection();    
+    const reserva = await clientMongo
+        .db(dbName)
+        .collection(collection)
+        .findOne({_idUsuario: new objectId(id)/* id */});
+    return reserva;
+}
+
+async function getReservaPorNro(id) {
+    const clientMongo = await connection.getConnection();    
+    const reserva = await clientMongo
+        .db(dbName)
+        .collection(collection)
+        .findOne({nroReserva: parseInt(id)});
+    return reserva;
+}
+
 async function addReserva(reserva) {
     const clientMongo = await connection.getConnection();    
     const result = await clientMongo
@@ -60,4 +78,14 @@ async function deleteReserva(id) {
     return result;
 }
 
-module.exports = {getReservas, getReserva, addReserva, updateReserva, deleteReserva};
+async function getNewNroReserva() {
+    const clientMongo = await connection.getConnection();    
+    const result = await clientMongo
+        .db(dbName)
+        .collection(collection)
+        .find()
+        .toArray();
+    return result.length + 1;
+}
+
+module.exports = {getReservas, getReserva, addReserva, updateReserva, deleteReserva, getNewNroReserva, getReservaPorUsuario, getReservaPorNro};
