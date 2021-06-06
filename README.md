@@ -90,5 +90,4 @@ TBD
 
 
 
-
  3. Cada proyecto debe contener un archivo readme.md en el cual se explica los siguientes aspectos: - Breve descripción (no más de 5 lineas) del proyecto y lo que apunta resolver. - Listado de funcionalidades (casos de uso) - Listado de actores/roles - Listado de las entidades principales 4. Instrucciones técnicas: - Para la instalación de un entorno de desarrollo - Para la ejecución 5. Listado de los endpoints de la API 

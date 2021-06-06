@@ -1,9 +1,5 @@
 require('dotenv').config();
 const mongoclient = require('mongodb').MongoClient;
-// TODO utilizar varibales de entorno
-//const uri = "mongodb+srv://admin:admin123@cluster0.zaghe.mongodb.net/sample_tp2?retryWrites=true&w=majority";
-
-//const uri = "mongodb+srv://admin:44w7FojbQL21smUn@cluster0.3bm3a.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const uri = process.env.MONGO_URI;
 
 const client = new mongoclient(uri);
