@@ -1,5 +1,5 @@
 const connection = require('./connection');
-let objectId = require('mongodb').ObjectId;
+//let objectId = require('mongodb').ObjectId;
 
 async function getPeliculas(){
     const clientmongo = await connection.getConnection();

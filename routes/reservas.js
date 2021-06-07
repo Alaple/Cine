@@ -1,23 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const dataReservas = require('../data/reservadb');
+//const dataFunciones = require('../data/funciondb');
 const joi = require('joi');
-
-/* GET reserva por id Usuario */
-
-function getValidacionReserva() {
-    return {
-        _idFuncion: joi.string().alphanum().required(),
-        _idUsuario: joi.string().alphanum().required(),
-        // max deberia ser cantidad disponible en la sala
-        cantidadEntradas: joi.number().max(2020).required(),
-        // nroReserva deberia ser auto incremental?
-        nroReserva: joi.number().required(),
-        valorTotal: joi.number().required(),
-        medioPago: joi.string().required()
-    }
-} 
-
 
 /* GET reservas */
 router.get('/', async function(req, res, next) {
@@ -35,14 +20,49 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+/* GET reserva por id Usuario */
+router.get('/usuario/:id', async (req, res) => {
+    const reserva = await dataReservas.getReservaPorUsuario(req.params.id);
+    if (reserva) {
+        res.json(reserva);
+    } else {
+        res.status(404).send('Reserva no encontrada');
+    }
+});
+
+/* GET reserva por NroReserva */
+router.get('/reserva/:id', async (req, res) => {
+    const reserva = await dataReservas.getReservaPorNro(req.params.id);
+    if (reserva) {
+        res.json(reserva);
+    } else {
+        res.status(404).send('Reserva no encontrada');
+    }
+});
+
 /* POST reserva */
 router.post('/', async (req, res) => {
-    const schema = joi.object(getValidacionReserva());
+    const schema = joi.object({
+        _idFuncion: joi.string().alphanum().required(),
+        _idUsuario: joi.string().alphanum().required(),
+        // max deberia ser cantidad disponible en la sala
+/*         cantidadEntradas: joi
+            .number()
+            .integer()
+            .min(1)
+            .max(dataFunciones.getFuncion(_idFuncion).cantLugarsDisponibles)
+            .required(), */
+        // No se valida NroReserva dado que es auto incremental
+        cantidadEntradas: joi.number().integer().min(1).max(2020).required(),
+        valorTotal: joi.number().required(),
+        medioPago: joi.string().required()
+    });
     const result = schema.validate(req.body);
     if (result.error) {
         res.status(400).send(result.error.details[0].message);
     } else {
         let reserva = req.body;
+        reserva.nroReserva = await dataReservas.getNewNroReserva();
         reserva = await dataReservas.addReserva(reserva);
         res.json(reserva);
     }
@@ -50,7 +70,22 @@ router.post('/', async (req, res) => {
 
 /* PUT reserva por id */
 router.put('/:id', async (req, res) => {
-    const schema = joi.object(getValidacionReserva());
+    const schema = joi.object({
+        _idFuncion: joi.string().alphanum().required(),
+        _idUsuario: joi.string().alphanum().required(),
+        // max deberia ser cantidad disponible en la sala + lugares de la reserva a mod
+/*         cantidadEntradas: joi
+            .number()
+            .integer()
+            .min(1)
+            .max(dataFunciones.getFuncion(_idFuncion).cantLugarsDisponibles + 
+                dataReservas.getReserva(req.params.id).cantidadEntradas)
+            .required(), */
+        cantidadEntradas: joi.number().integer().min(1).max(2020).required(),
+        // Nro de reserva no se puede actualizar. Es auto incremental
+        valorTotal: joi.number().required(),
+        medioPago: joi.string().required()
+    });
     const result = schema.validate(req.body);
     if (result.error) {
         res.status(400).send(result.error.details[0].message)

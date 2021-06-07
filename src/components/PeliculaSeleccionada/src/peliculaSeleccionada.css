@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 95%;
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr 1.1fr;
+    grid-template-rows: 0.1fr 0.4fr 0.2fr 3.6fr 0.4fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        ". . ."
+        "Titulo . ."
+        ". . ."
+        "Poster Texto Trailer"
+        ". . .";
+}
+
+.Poster {
+    display: grid;
+    grid-template-columns: 0.3fr 2.4fr 0.3fr;
+    grid-template-rows: 0.1fr 2.2fr 0.4fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        ". . ."
+        ". Imagen ."
+        ". . .";
+    grid-area: Poster;
+}
+
+.Imagen {
+    grid-area: Imagen;
+}
+
+.Trailer {
+    display: grid;
+    grid-template-columns: 0.3fr 2.5fr 0.2fr;
+    grid-template-rows: 0.2fr 1.6fr 0.8fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        ". . ."
+        ". Video ."
+        ". . .";
+    grid-area: Trailer;
+}
+
+.Video {
+    grid-area: Video;
+}
+
+.Texto {
+    display: grid;
+    grid-template-columns: 0.2fr 2.6fr 0.2fr;
+    grid-template-rows: 0.1fr 2.5fr 0.1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        ". . ."
+        ". Descripcion ."
+        ". . .";
+    grid-area: Texto;
+}
+
+.Descripcion {
+    grid-area: Descripcion;
+}
+
+.Titulo {
+    grid-area: Titulo;
+}
