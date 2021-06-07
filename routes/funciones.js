@@ -22,9 +22,9 @@ router.get('/', async function(req, res, next) {
 
 /* GET función por id */
 router.get('/:id', async (req, res) => {
-    const reserva = await dataFunciones.getFuncion(req.params.id);
+    const funcion = await dataFunciones.getFuncion(req.params.id);
     if (funcion) {
-        res.json(reserva);
+        res.json(funcion);
     } else {
         res.status(404).send('función no encontrada');
     }
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
     } else {
         let funcion = req.body;
         funcion = await dataFunciones.addFuncion(funcion);
-        res.json(reserva);
+        res.json(funcion);
     }
 });
 
