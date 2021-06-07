@@ -16,7 +16,7 @@ function getValidacionFuncion() {
 
 /* GET funciones */
 router.get('/', async function(req, res, next) {
-  let funciones = await datafunciones.getFunciones();
+  let funciones = await dataFunciones.getFunciones();
   res.json(funciones);
 });
 

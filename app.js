@@ -8,6 +8,7 @@ var logger = require('morgan');
 const reservasRouter = require('./routes/reservas');
 const peliculasRouter = require('./routes/peliculas');
 const funcionesRouter = require('./routes/funciones');
+const salasRouter = require('./routes/salas');
 
 
 var app = express();
@@ -25,7 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/', indexRouter);
 app.use('/api/reservas', reservasRouter);
 app.use('/api/peliculas', peliculasRouter);
-app.user('/api/funciones', funcionesRouter);
+app.use('/api/funciones', funcionesRouter);
+app.use('/api/salas', salasRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

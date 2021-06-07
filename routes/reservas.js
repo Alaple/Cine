@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dataReservas = require('../data/reservadb');
-//const dataFunciones = require('../data/funciondb');
+const dataFunciones = require('../data/funciondb');
 const joi = require('joi');
 
 /* GET reservas */
@@ -42,21 +42,21 @@ router.get('/reserva/:id', async (req, res) => {
 
 /* POST reserva */
 router.post('/', async (req, res) => {
+    const funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
     const schema = joi.object({
         _idFuncion: joi.string().alphanum().required(),
         _idUsuario: joi.string().alphanum().required(),
-        // max deberia ser cantidad disponible en la sala
-/*         cantidadEntradas: joi
+        cantidadEntradas: joi
             .number()
             .integer()
             .min(1)
-            .max(dataFunciones.getFuncion(_idFuncion).cantLugarsDisponibles)
-            .required(), */
+            .max(funcionReserva.cantLugaresDisponibles)
+            .required(),
         // No se valida NroReserva dado que es auto incremental
-        cantidadEntradas: joi.number().integer().min(1).max(2020).required(),
         valorTotal: joi.number().required(),
         medioPago: joi.string().required()
     });
+    // TODO Actualizar la cant disponibles de la funcion restando las reservadas recien.
     const result = schema.validate(req.body);
     if (result.error) {
         res.status(400).send(result.error.details[0].message);
@@ -70,18 +70,19 @@ router.post('/', async (req, res) => {
 
 /* PUT reserva por id */
 router.put('/:id', async (req, res) => {
+    const funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
+    const actualReserva = await dataReservas.getReserva(req.params.id);
     const schema = joi.object({
         _idFuncion: joi.string().alphanum().required(),
         _idUsuario: joi.string().alphanum().required(),
         // max deberia ser cantidad disponible en la sala + lugares de la reserva a mod
-/*         cantidadEntradas: joi
+        cantidadEntradas: joi
             .number()
             .integer()
             .min(1)
-            .max(dataFunciones.getFuncion(_idFuncion).cantLugarsDisponibles + 
-                dataReservas.getReserva(req.params.id).cantidadEntradas)
-            .required(), */
-        cantidadEntradas: joi.number().integer().min(1).max(2020).required(),
+            .max(funcionReserva.cantLugarsDisponibles + 
+                actualReserva.cantidadEntradas)
+            .required(),
         // Nro de reserva no se puede actualizar. Es auto incremental
         valorTotal: joi.number().required(),
         medioPago: joi.string().required()

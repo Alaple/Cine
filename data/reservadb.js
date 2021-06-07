@@ -28,7 +28,7 @@ async function getReservaPorUsuario(id) {
     const reserva = await clientMongo
         .db(dbName)
         .collection(collection)
-        .findOne({_idUsuario: new objectId(id)/* id */});
+        .findOne({_idUsuario: new objectId(id)});
     return reserva;
 }
 
