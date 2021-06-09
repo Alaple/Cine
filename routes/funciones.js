@@ -5,24 +5,15 @@ const dataSalas = require('../data/saladb');
 const joi = require('joi');
 
 
-function getValidacionFuncion() {
+function getValidacionFuncion(asientoSala) {
+
     return {
         diaHorario: joi.date().required(),
         _idPelicula: joi.string().alphanum().required(),
         _idSala: joi.string().alphanum().required(),
-        cantLugaresDisponibles: joi.number().max(getCantAsientosSala(_idSala)).required()
+        cantLugaresDisponibles: joi.number().max(asientoSala).required()
     }
 } 
-
-async function getCantAsientosSala(idSala){
-    let sala;
-    sala = await dataSalas.getSala(idSala);
-    if(sala !== null){
-        return sala.cantLugares;
-    } else {
-        return 0;
-    }
-}      
 
 /* GET funciones */
 router.get('/', async function(req, res, next) {
@@ -62,7 +53,8 @@ router.get('/sala/:id', async (req, res) => {
 
 /* POST función */
 router.post('/', async (req, res) => {
-    const schema = joi.object(getValidacionFuncion());
+    const salaFuncion = await dataSalas.getSala(req.body._idSala);
+    const schema = joi.object(getValidacionFuncion(salaFuncion.cantLugares));
     const result = schema.validate(req.body);
     if (result.error) {
         res.status(400).send(result.error.details[0].message);
@@ -75,14 +67,15 @@ router.post('/', async (req, res) => {
 
 /* PUT funcion por id */
 router.put('/:id', async (req, res) => {
-    const schema = joi.object(getValidacionFuncion());
+    const salaFuncion = await dataSalas.getSala(req.body._idSala);
+    const schema = joi.object(getValidacionFuncion(salaFuncion.cantLugares));
     const result = schema.validate(req.body);
     if (result.error) {
         res.status(400).send(result.error.details[0].message)
     } else {
         let funcion = req.body;
         funcion._id = req.params.id;
-        datafunciones.udpateFuncion(funcion);
+        dataFunciones.updateFuncion(funcion);
         res.json(funcion);
     }
 });
