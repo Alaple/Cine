@@ -44,6 +44,16 @@ Permite seleccionar la función de la película, agendar el día y horario más 
 ```
 npm install
 ```
+- Compilación para server local
+
+```
+npm run start
+```
+- Compilación para server local con Nodemon
+
+```
+npm run startDev
+```
 - Compilación para desarrollo
 
 ```
@@ -60,7 +70,7 @@ npm run build
 
 ## 🛠️ ENDPOINTS
 
-| CRUD     |      RESTFull HTTP       |  Descripción |
+| CRUD     |      RESTFul HTTP       |  Descripción |
 |----------|:-------------:|------ |
 | Create   |  POST         | Crear registros de usuarios, reservas, funciones, salas y películas |
 | Read     |  GET          |   Obtener los registros de usuarios, reservas, funciones, salas y películas|
@@ -96,7 +106,11 @@ npm run build
   GET 
   /api/usuarios/${id}
   /api/reservas/${id}
+  /api/reservas/usuario/${id}
+  /api/reservas/reserva/${id}
   /api/funciones/${id}
+  /api/funciones/pelicula/${id}
+  /api/funciones/sala/${id}
   /api/salas/${id}
   /api/peliculas/${id}
 ```
@@ -121,17 +135,6 @@ npm run build
   /api/funciones/${id}
   /api/salas/${id}
   /api/peliculas/${id}
-```
-
-#### Eliminar todos los registros
-
-```http
-  DELETE 
-  /api/usuarios
-  /api/reservas
-  /api/funciones
-  /api/salas
-  /api/peliculas
 ```
 
 #### Eliminar registros por id

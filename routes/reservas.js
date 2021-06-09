@@ -31,8 +31,8 @@ router.get('/usuario/:id', async (req, res) => {
 });
 
 /* GET reserva por NroReserva */
-router.get('/reserva/:id', async (req, res) => {
-    const reserva = await dataReservas.getReservaPorNro(req.params.id);
+router.get('/reserva/:nroReserva', async (req, res) => {
+    const reserva = await dataReservas.getReservaPorNro(req.params.nroReserva);
     if (reserva) {
         res.json(reserva);
     } else {
