@@ -19,7 +19,6 @@ async function getAllUsers(){
 async function addUser(user){
     const connectiondb = await connection.getConnection();
 
-    // los nombres de base de datos pueden cambiar   
     user.password = await bcrypt.hash(user.password, 8);
 
     const result = await connectiondb.db(dbName)
@@ -43,12 +42,12 @@ async function findByCredentials(email, password){
                         .findOne({email: email});
 
     if(!user){
-        throw new Error('Credenciales no validas');
+        throw new Error('Credenciales no válidas');
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch){
-        throw new Error('Credenciales no validas');
+        throw new Error('Credenciales no válidas');
     }
     
     return user;

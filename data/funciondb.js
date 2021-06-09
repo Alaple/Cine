@@ -14,24 +14,22 @@ async function getFunciones() {
     return funciones;
 }
 
-// chequear si funciona
 async function getFuncionesPorPelicula(idPelicula) {
     const clientMongo = await connection.getConnection();  
     const funciones = await clientMongo
         .db(dbName)
         .collection(collection)
-        .find({_idPelicula:idPelicula})
+        .find({_idPelicula: new objectId(idPelicula)})
         .toArray();
     return funciones;
 }
 
-// chequear si funciona
 async function getFuncionesPorSala(idSala) {
     const clientMongo = await connection.getConnection();  
     const funciones = await clientMongo
         .db(dbName)
         .collection(collection)
-        .find({_idSala:idSala})
+        .find({_idSala: new objectId(idSala)})
         .toArray();
     return funciones;
 }
@@ -80,4 +78,4 @@ async function deleteFuncion(id) {
     return result;
 }
 
-module.exports = {getFunciones, getFuncion, addFuncion, updateFuncion, deleteFuncion};
+module.exports = {getFunciones, getFuncion, getFuncionesPorPelicula, getFuncionesPorSala, addFuncion, updateFuncion, deleteFuncion};

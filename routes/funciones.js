@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dataFunciones = require('../data/funciondb');
+const dataSalas = require('../data/saladb');
 const joi = require('joi');
 
 
@@ -9,10 +10,19 @@ function getValidacionFuncion() {
         diaHorario: joi.date().required(),
         _idPelicula: joi.string().alphanum().required(),
         _idSala: joi.string().alphanum().required(),
-        // max debería ser el cant de entradas totales, cómo se haría? Se saca de entradas de la sala?
-        cantLugaresDisponibles: joi.number().max(100).required()
+        cantLugaresDisponibles: joi.number().max(getCantAsientosSala(_idSala)).required()
     }
 } 
+
+async function getCantAsientosSala(idSala){
+    let sala;
+    sala = await dataSalas.getSala(idSala);
+    if(sala !== null){
+        return sala.cantLugares;
+    } else {
+        return 0;
+    }
+}      
 
 /* GET funciones */
 router.get('/', async function(req, res, next) {
@@ -27,6 +37,26 @@ router.get('/:id', async (req, res) => {
         res.json(funcion);
     } else {
         res.status(404).send('función no encontrada');
+    }
+});
+
+/* GET funciones por Película */
+router.get('/pelicula/:id', async (req, res) => {
+    const funcion = await dataFunciones.getFuncionesPorPelicula(req.params.id);
+    if (funcion) {
+        res.json(funcion);
+    } else {
+        res.status(404).send('funcion no encontrada');
+    }
+});
+
+/* GET funciones por Sala */
+router.get('/sala/:id', async (req, res) => {
+    const funcion = await dataFunciones.getFuncionesPorSala(req.params.id);
+    if (funcion) {
+        res.json(funcion);
+    } else {
+        res.status(404).send('funcion no encontrada');
     }
 });
 

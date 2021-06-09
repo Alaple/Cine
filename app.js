@@ -9,6 +9,7 @@ const reservasRouter = require('./routes/reservas');
 const peliculasRouter = require('./routes/peliculas');
 const funcionesRouter = require('./routes/funciones');
 const salasRouter = require('./routes/salas');
+const usuariosRouter = require('./routes/usuarios')
 
 
 var app = express();
@@ -28,6 +29,7 @@ app.use('/api/reservas', reservasRouter);
 app.use('/api/peliculas', peliculasRouter);
 app.use('/api/funciones', funcionesRouter);
 app.use('/api/salas', salasRouter);
+app.use('/api/usuarios', usuariosRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

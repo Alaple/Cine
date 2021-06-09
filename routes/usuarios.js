@@ -1,10 +1,10 @@
-
 var express = require('express');
 var router = express.Router();
 const dataUsuario = require('../data/usuariodb');
+const auth = require('../middleware/auth');
 
-/* GET users listing. */
-// api/users/
+/* GET usuarios */
+// api/usuarios/
 router.get('/', auth, async function(req, res, next) {
   const users = await dataUsuario.getAllUsers();
   res.send(users);
