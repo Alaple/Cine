@@ -5,25 +5,27 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const dbName = 'cine_tp2';
-const collection = 'salas';
+const collection = 'usuarios';
 
 async function getAllUsers(){
     const connectiondb = await connection.getConnection();
-    const users = await connectiondb.db(dbName)
-                        .collection(collection)
-                        .find()
-                        .toArray();
+    const users = await connectiondb
+        .db(dbName)
+        .collection(collection)
+        .find()
+        .toArray();
+    console.log(users);
     return users;
 }
 
 async function addUser(user){
     const connectiondb = await connection.getConnection();
 
-    user.password = await bcrypt.hash(user.password, 8);
+    user.clave = await bcrypt.hash(user.clave, 8);
 
     const result = await connectiondb.db(dbName)
-                        .collection(collection)
-                        .insertOne(user);
+        .collection(collection)
+        .insertOne(user);
     return result;
 }
 
@@ -35,7 +37,7 @@ async function getUser(id){
     return user;
 }
 
-async function findByCredentials(email, password){
+async function findByCredentials(email, clave) {
     const connectiondb = await connection.getConnection();
     const user = await connectiondb.db(dbName)
                         .collection(collection)
@@ -45,7 +47,7 @@ async function findByCredentials(email, password){
         throw new Error('Credenciales no válidas');
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(clave, user.clave);
     if(!isMatch){
         throw new Error('Credenciales no válidas');
     }
@@ -53,7 +55,7 @@ async function findByCredentials(email, password){
     return user;
 }
 
-function generateAuthToken(user){
+function generateAuthToken(user) {
     const token = jwt.sign({_id:user._id}, process.env.SECRET, {expiresIn: '2h'});
     return token;
 }
