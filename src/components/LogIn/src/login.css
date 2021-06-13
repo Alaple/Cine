@@ -1,0 +1,44 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr 1fr 2.5fr 1fr;
+    grid-template-rows: 1fr 0.9fr 0.7fr 0.5fr 0.2fr 0.5fr 0.5fr 0.5fr 0.3fr 0.5fr 0.7fr 0.5fr 0.2fr 0.5fr 5.1fr 0.8fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . . . ."
+      ". IngresarCuenta . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". TituloUsuario . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". TextoUsuario . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". TituloClave . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". TextClave . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". BotonLogIn . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". Registrarse . ImagenPromocional ."
+      ". . . ImagenPromocional ."
+      ". . . . .";
+  }
+
+  .adjustPosition{
+    margin-top: auto;
+  }
+  
+  .IngresarCuenta { grid-area: IngresarCuenta; }
+  
+  .TituloUsuario { grid-area: TituloUsuario; }
+  
+  .TextoUsuario { grid-area: TextoUsuario; }
+  
+  .TituloClave { grid-area: TituloClave; }
+  
+  .TextClave { grid-area: TextClave; }
+  
+  .BotonLogIn { grid-area: BotonLogIn; }
+  
+  .Registrarse { grid-area: Registrarse; }
+  
+  .ImagenPromocional { grid-area: ImagenPromocional; }
+  

@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from './components/Home/index.vue'
-import Login from './components/Login.vue'
+import Login from './components/LogIn/index.vue'
+import Register from './components/Register/index.vue'
 import PeliculaSeleccionada from './components/PeliculaSeleccionada/index.vue'
-/* import Register from './components/Register.vue'
+/* 
 import MiPerfil from './components/MiPerfil.vue'
 import PeliculaFunciones from './components/PeliculaFunciones.vue'
 import Peliculas from './components/Peliculas.vue'
@@ -20,9 +21,9 @@ export const router = new VueRouter({
         { path: '/', redirect:'/home' },
         { path: '/home', component: Home }, 
         { path: '/login', component: Login },
+        { path: '/register', component: Register },
         { path: '/peliculaSeleccionada', component: PeliculaSeleccionada },
-/*          { path: '/register', component: Register },
-        { path: '/miPerfil', component: MiPerfil },
+        /*{ path: '/miPerfil', component: MiPerfil },
         { path: '/peliculaFunciones', component: PeliculaFunciones },
         { path: '/peliculas', component: Peliculas },
         { path: '/salas', component: Salas },

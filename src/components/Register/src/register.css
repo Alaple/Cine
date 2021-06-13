@@ -1,0 +1,69 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.5fr 1.7fr 0.1fr 1.4fr 0.8fr 2.4fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 0.1fr 0.1fr 0.3fr 0.1fr 0.2fr 0.2fr 0.2fr 0.1fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.1fr 0.3fr 3fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . . . . . ."
+      ". . . . . ImagenPromocional ."
+      ". TituloNombre . TittuloApellido . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". TextoNombre . TextoApelldio . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". TituloMail . . . ImagenPromocional ."
+      ". TextoMail TextoMail TextoMail . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". TituloClave . TitucloConfirmar . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". TextoClave . TextoConfirmar . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". TituloFecha . TituloGenero . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". TextoFehca . TextoGenero . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". BotonRegistro . . . ImagenPromocional ."
+      ". . . . . ImagenPromocional ."
+      ". . . . . . .";
+  }
+  
+    .adjustPosition{
+        margin-top: auto;
+        text-align: left;
+    }
+
+    .adjustInput{
+        text-align: left;
+    }
+
+  .TituloNombre { grid-area: TituloNombre; }
+  
+  .TittuloApellido { grid-area: TittuloApellido; }
+  
+  .TextoNombre { grid-area: TextoNombre; }
+  
+  .TextoApelldio { grid-area: TextoApelldio; }
+  
+  .TituloMail { grid-area: TituloMail; }
+  
+  .TextoMail { grid-area: TextoMail; }
+  
+  .TituloClave { grid-area: TituloClave; }
+  
+  .TitucloConfirmar { grid-area: TitucloConfirmar; }
+  
+  .TextoClave { grid-area: TextoClave; }
+  
+  .TextoConfirmar { grid-area: TextoConfirmar; }
+  
+  .TituloFecha { grid-area: TituloFecha; }
+  
+  .TituloGenero { grid-area: TituloGenero; }
+  
+  .TextoFehca { grid-area: TextoFehca; }
+  
+  .TextoGenero { grid-area: TextoGenero; }
+  
+  .BotonRegistro { grid-area: BotonRegistro; }
+  
+  .ImagenPromocional { grid-area: ImagenPromocional; }
+  
