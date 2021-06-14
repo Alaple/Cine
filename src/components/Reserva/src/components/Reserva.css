@@ -1,0 +1,97 @@
+.src-components-reserva {
+
+}
+
+.container {
+display: grid;
+grid-template-columns: 0fr 1fr 1fr 1fr 0fr;
+grid-template-rows: 0fr 1fr 0fr;
+gap: 30px 30px;
+grid-auto-flow: row;
+grid-template-areas:
+    ". . . . ."
+    ". Datos Datos Ticket ."
+    ". . . . .";
+}
+
+.Ticket {
+text-align: left; /* Agregao manual */
+border: 2px solid black; /* Agregao manual */
+padding: 5px; /* Agregao manual */
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+gap: 15px 0px;
+grid-auto-flow: row;
+grid-template-areas:
+    "TICKET TICKET TICKET"
+    ". . ."
+    "Numero Numero Numero"
+    "Pelicula Pelicula Pelicula"
+    "Dia Dia Dia"
+    "Hora Hora Hora"
+    "Sala Sala Sala"
+    "CantidadEntradas CantidadEntradas CantidadEntradas"
+    "ValorTotal ValorTotal ValorTotal"
+    "MedioPago MedioPago MedioPago"
+    ". . .";
+grid-area: Ticket;
+}
+
+.TICKET { grid-area: TICKET; }
+
+.Numero { grid-area: Numero; }
+
+.Pelicula { grid-area: Pelicula; }
+
+.Dia { grid-area: Dia; }
+
+.Hora { grid-area: Hora; }
+
+.Sala { grid-area: Sala; }
+
+.CantidadEntradas { grid-area: CantidadEntradas; }
+
+.ValorTotal { grid-area: ValorTotal; }
+
+.MedioPago { grid-area: MedioPago; }
+
+.Datos {
+text-align: left; /* Agregao manual */
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+gap: 0px 30px;
+grid-auto-flow: row;
+grid-template-areas:
+    "Nombre Nombre"
+    "Portada Funcion"
+    "Portada ."
+    "Portada SELECCIONAR-PAGO"
+    "Portada Tarjeta"
+    "Portada MercadoPago"
+    "Portada ."
+    "Portada InputCantidadEntradas"
+    "Portada Input"
+    "Portada Reservar"
+    ". .";
+grid-area: Datos;
+}
+
+.Nombre { grid-area: Nombre; }
+
+.Portada { grid-area: Portada; }
+
+.Funcion { grid-area: Funcion; }
+
+.SELECCIONAR-PAGO { grid-area: SELECCIONAR-PAGO; }
+
+.Tarjeta { grid-area: Tarjeta; }
+
+.MercadoPago { grid-area: MercadoPago; }
+
+.InputCantidadEntradas { grid-area: InputCantidadEntradas; }
+
+.Input { grid-area: Input; }
+
+.Reservar { grid-area: Reservar; }

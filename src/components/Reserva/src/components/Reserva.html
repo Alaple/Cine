@@ -1,0 +1,62 @@
+
+<section class="src-components-reserva">
+  <div class="container">
+    <div v-if="mostrarTicket" class="Ticket">
+      <div class="TICKET">TICKET</div>
+      <div class="Numero">
+        NÚMERO: {{ reserva.nroReserva.$numberInt}}
+      </div>
+      <div class="Pelicula">
+        PELÍCULA: A Quiet Place
+      </div>
+      <div class="Dia">
+        DIA: MIERCOLES
+      </div>
+      <div class="Hora">
+        HORA: 12:30
+      </div>
+      <div class="Sala">
+        SALA: A
+      </div>
+      <div class="CantidadEntradas">
+        CANTIDAD DE ENTRADAS: {{ reserva.cantidadEntradas.$numberInt}}
+      </div>
+      <div class="ValorTotal">
+        VALOR TOTAL: ${{ reserva.valorTotal.$numberDouble}}
+      </div>
+      <div class="MedioPago">
+        MEDIO DE PAGO: {{ reserva.medioPago}}
+      </div>
+    </div>
+    <div class="Datos">
+      <div class="Nombre">
+        <h2>A Quiet Place</h2>        
+      </div>
+      <div class="Portada">
+        <img alt="Poster" src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/557.jpg">
+      </div>
+      <div class="Funcion">
+        MIERCOLES 12:30 
+      </div>
+      <div class="SELECCIONAR-PAGO">
+        SELECCIONAR MEDIO DE PAGO
+      </div>
+      <div class="Tarjeta">
+        <input type="radio" id="tarjeta" name="medioPago" value="tarjeta" checked>
+        <label for="tarjeta">Tarjeta</label>
+      </div>
+      <div class="MercadoPago">
+        <input type="radio" id="mercadoPago" name="medioPago" value="mercadoPago">
+        <label for="mercadoPago">MercadoPago</label>
+      </div>
+      <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS</div>
+      <div class="Input">
+        <input type="number" value="reserva.cantidadEntradas.$numberInt">
+      </div>
+      <div class="Reservar">
+        <button class="btn btn-primary" @click="mostrarTicket=true">Reservar</button>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,13 @@
+
+<section class="src-components-pelicula-funciones">
+  <h2>{{ pelicula }}</h2>
+  <img alt="Poster" src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/557.jpg">
+  <div v-for="(dia, index) in diasFuncion" :key="index">
+    <h3>{{ dia }}</h3>
+    <div v-for="(horario, index) in horariosFuncion" :key="index">      
+      <div v-if="dia == horario.dia">
+        <button class="btn btn-secondary my-3 mr-2" v-for="(hora, index) in horario.horarios" :key="index">{{hora}}</button>
+      </div>
+    </div>
+  </div>
+</section>
