@@ -30,7 +30,12 @@ export default {
         "esAdministrador":false,
         "clave":"pepe123"
       },
-      mostrarTicket: false
+      mostrarTicket: false,
+      urlReservas: 'http://localhost:3000/api/reservas/',
+      urlUsuarios: 'http://localhost:3000/api/usuarios/',
+      reservas: [],
+      usuarios: [],
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzkwNzQ1Y2JiYTQxNzA1YmMyNDAiLCJpYXQiOjE2MjM4ODYzMjUsImV4cCI6MTYyMzg5MzUyNX0.IU9hWKtH8MvmUY6jqSLjqVBC2ndpCWweMCFCt3byn3I'
     }
   },
   computed: {
@@ -40,7 +45,24 @@ export default {
 
   },
   methods: {
-
+    async getReservas() {
+      try {
+        let respuesta = await this.axios(this.urlReservas);
+        console.log('AXIOS GET RESERVAS', respuesta.data);
+        this.reservas = respuesta.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getUsuarios() {
+      try {
+        let respuesta = await this.axios(this.urlUsuarios, { headers: { Authorization: `Bearer ${this.token}` } });
+        console.log('AXIOS GET USUARIOS', respuesta.data);
+        this.usuarios = respuesta.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
   }
 }
 

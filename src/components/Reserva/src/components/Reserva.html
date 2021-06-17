@@ -56,7 +56,15 @@
       <div class="Reservar">
         <button class="btn btn-primary" @click="mostrarTicket=true">Reservar</button>
       </div>
+      <div class="button btn btn-success" @click="getReservas">
+        GET Reservas
+      </div>
+      <div class="button btn btn-success" @click="getUsuarios">
+        GET Usuarios
+      </div>
     </div>
   </div>
+  {{ reservas }}
+  {{ usuarios }}
 </section>
 
