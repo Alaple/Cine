@@ -19,7 +19,7 @@ async function getFuncionesPorPelicula(idPelicula) {
     const funciones = await clientMongo
         .db(dbName)
         .collection(collection)
-        .find({_idPelicula: new objectId(idPelicula)})
+        .find({_idPelicula: idPelicula})
         .toArray();
     return funciones;
 }
@@ -29,7 +29,7 @@ async function getFuncionesPorSala(idSala) {
     const funciones = await clientMongo
         .db(dbName)
         .collection(collection)
-        .find({_idSala: new objectId(idSala)})
+        .find({_idSala: idSala})
         .toArray();
     return funciones;
 }

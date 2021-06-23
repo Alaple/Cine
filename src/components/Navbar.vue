@@ -1,11 +1,10 @@
 <template>
-
   <section class="src-componentes-navbar">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" role="navigation">
       
-      <router-link to="/">
-        <a class="navbar-brand" href="#">Inicio</a>
+      <!-- opción ruta Home -->
+      <router-link to="/home">
+        <a class="navbar-brand" href="#">ReservaTuEntrada</a>
       </router-link>
 
       <button 
@@ -22,12 +21,6 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <!-- opción ruta Home -->
-          <li class="nav-item">
-            <router-link to="/home">
-              <a class="nav-link" href="#">Home</a>
-            </router-link>
-          </li>
           <!-- opción ruta Login -->
           <li class="nav-item">
             <router-link to="/login">
@@ -38,12 +31,6 @@
           <li class="nav-item">
             <router-link to="/register">
               <a class="nav-link" href="#">Register</a>
-            </router-link>
-          </li>
-          <!-- opción ruta MiPerfil -->
-          <li class="nav-item">
-            <router-link to="/miPerfil">
-              <a class="nav-link" href="#">MiPerfil</a>
             </router-link>
           </li>
           <!-- opción ruta PeliculaSeleccionada -->
@@ -74,6 +61,13 @@
           <li class="nav-item">
             <router-link to="/reserva">
               <a class="nav-link" href="#">Reserva</a>
+            </router-link>
+          </li>
+            <!-- opción ruta MiPerfil -->
+          <li class="nav-item">
+            <router-link to="/miPerfil">
+              <!--<img class="imgPerfil" src="images/perfil.png" alt="Perfil" />-->
+              <a class="nav-link" data-toggle="collapse" data-target=".in" href="#">MiPerfil</a>
             </router-link>
           </li>
         </ul>
@@ -111,4 +105,22 @@
   .src-componentes-navbar {
 
   }
+
+  .navbar {
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    }
+
+  .navbar li{
+    border-right: 1px solid white;
+  }
+
+  .navbar li:last-child{
+    border-right: none;
+  }
+
+  .navbar-brand{
+    padding-left: .8rem;
+  }
+
 </style>
