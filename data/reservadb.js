@@ -23,12 +23,13 @@ async function getReserva(id) {
     return reserva;
 }
 
-async function getReservaPorUsuario(id) {
+async function getReservasPorUsuario(id) {
     const clientMongo = await connection.getConnection();    
     const reserva = await clientMongo
         .db(dbName)
         .collection(collection)
-        .findOne({_idUsuario: new objectId(id)});
+        .find({_idUsuario: id})
+        .toArray();
     return reserva;
 }
 
@@ -88,4 +89,4 @@ async function getNewNroReserva() {
     return result.length + 1;
 }
 
-module.exports = {getReservas, getReserva, addReserva, updateReserva, deleteReserva, getNewNroReserva, getReservaPorUsuario, getReservaPorNro};
+module.exports = {getReservas, getReserva, addReserva, updateReserva, deleteReserva, getNewNroReserva, getReservasPorUsuario, getReservaPorNro};

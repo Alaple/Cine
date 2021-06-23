@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
 
 /* GET reserva por id Usuario */
 router.get('/usuario/:id', async (req, res) => {
-    const reserva = await dataReservas.getReservaPorUsuario(req.params.id);
+    const reserva = await dataReservas.getReservasPorUsuario(req.params.id);
     if (reserva) {
         res.json(reserva);
     } else {
@@ -56,7 +56,6 @@ router.post('/', async (req, res) => {
         valorTotal: joi.number().required(),
         medioPago: joi.string().required()
     });
-    // TODO Actualizar la cant disponibles de la funcion restando las reservadas recien.
     const result = schema.validate(req.body);
     if (result.error) {
         res.status(400).send(result.error.details[0].message);
@@ -64,6 +63,7 @@ router.post('/', async (req, res) => {
         let reserva = req.body;
         reserva.nroReserva = await dataReservas.getNewNroReserva();
         reserva = await dataReservas.addReserva(reserva);
+        // TODO Actualizar la cant disponibles de la funcion restando las reservadas.
         res.json(reserva);
     }
 });
@@ -71,19 +71,20 @@ router.post('/', async (req, res) => {
 /* PUT reserva por id */
 router.put('/:id', async (req, res) => {
     const funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
-    const actualReserva = await dataReservas.getReserva(req.params.id);
+    const reservaOriginal = await dataReservas.getReserva(req.params.id);
+    const maxLugaresDisponibles = funcionReserva.cantLugaresDisponibles + reservaOriginal.cantidadEntradas;
     const schema = joi.object({
         _idFuncion: joi.string().alphanum().required(),
         _idUsuario: joi.string().alphanum().required(),
-        // max deberia ser cantidad disponible en la sala + lugares de la reserva a mod
+        // max es la cantidad disponible en la sala + lugares de la reserva original
         cantidadEntradas: joi
             .number()
             .integer()
             .min(1)
-            .max(funcionReserva.cantLugarsDisponibles + 
-                actualReserva.cantidadEntradas)
+            .max(maxLugaresDisponibles)
             .required(),
         // Nro de reserva no se puede actualizar. Es auto incremental
+        nroReserva: joi.valid(reservaOriginal.nroReserva).required(),
         valorTotal: joi.number().required(),
         medioPago: joi.string().required()
     });
@@ -93,7 +94,8 @@ router.put('/:id', async (req, res) => {
     } else {
         let reserva = req.body;
         reserva._id = req.params.id;
-        dataReservas.updateReserva(reserva);
+        await dataReservas.updateReserva(reserva);
+    // TODO Actualizar la cant disponibles de la funcion restando las reservadas.
         res.json(reserva);
     }
 });
