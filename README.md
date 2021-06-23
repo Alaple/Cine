@@ -10,6 +10,7 @@ Permite seleccionar la función de la película, agendar el día y horario más 
 - Modificación de datos de perfil de usuario
 - Selección de películas, salas y funciones disponibles
 - Selección de medio de pago
+- Impresión de ticket de reserva
 - Consulta de historial de reservas
 
 ### // ADMINISTRADOR
@@ -17,17 +18,10 @@ Permite seleccionar la función de la película, agendar el día y horario más 
 - Creación, modificación y eliminación de películas, salas y funciones
 - Carga de datos relacionados a los medios de pago ofrecidos
 
-### // SISTEMA
-- Muestra de películas, salas y funciones disponibles
-- Posibilidad de selección de películas, salas y funciones
-- Posibilidad de selección de diferentes medios de pago
-- Impresión de ticket de reserva
-
 
 ## 🛠️ ACTORES/ROLES
 - USUARIO
 - ADMINISTRADOR
-- SISTEMA
 
 
 ## 🛠️ ENTIDADES PRINCIPALES
@@ -35,6 +29,7 @@ Permite seleccionar la función de la película, agendar el día y horario más 
 - PELÍCULA
 - FUNCIÓN
 - RESERVA
+- SALA
 
 
 ## 🛠️ INSTRUCCIONES TÉCNICAS
