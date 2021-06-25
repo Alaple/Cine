@@ -2,10 +2,7 @@
     <div class="container">
         <h2>Peliculas</h2>
         <div class="editorial-grid">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/Posters/5cfaee9ef3caf836be1747fa8f942893.jpg?v=14042021" alt="">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/Posters/407275c1b8596227729365a912d3cb41.jpg?v=14042021" alt="">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/Posters/d80324294c8142a328d2f65ae9dd8f55.jpg?v=14042021" alt="">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/Posters/503c6ddba773ca281762f2522aa93f1e.jpg?v=14042021" alt="">
+            <img v-for="pelicula in peliculas" :src="pelicula.url_imagen" alt="" :value="pelicula._id" @click="savePelicula(pelicula._id)" />
         </div>
     </div>
     <div class="container">
