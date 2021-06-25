@@ -28,7 +28,7 @@ export default {
         }
       },
       goToReserva(){
-        router.push('/reserva');
+        router.push('/peliculaFunciones');
       }
     }
   }

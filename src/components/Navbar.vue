@@ -26,19 +26,7 @@
             <router-link to="/login">
               <a class="nav-link" href="#">Login</a>
             </router-link>
-          </li>
-          <!-- opción ruta Register -->
-          <li class="nav-item">
-            <router-link to="/register">
-              <a class="nav-link" href="#">Register</a>
-            </router-link>
-          </li>
-          <!-- opción ruta PeliculaSeleccionada -->
-          <li class="nav-item">
-            <router-link to="/peliculaSeleccionada">
-              <a class="nav-link" href="#">PeliculaSeleccionada</a>
-            </router-link>
-          </li>
+          </li> 
           <!-- opción ruta PeliculaFunciones -->
           <li class="nav-item">
             <router-link to="/peliculaFunciones">

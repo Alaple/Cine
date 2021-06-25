@@ -57,7 +57,7 @@ span.psw {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 0.9fr 1.1fr;
-    grid-template-rows: 0.1fr 0.4fr 0.2fr 3.6fr 0.4fr;
+    grid-template-rows: 2fr 3.6fr 0.4fr;
     gap: 0px 0px;
     grid-template-areas:
         ". . ."
