@@ -1,0 +1,35 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.4fr 2.2fr 0.4fr;
+    grid-template-rows: 0.4fr 2.2fr 0.4fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . ."
+      ". AMB_OPCIONES ."
+      ". . .";
+  }
+  
+  .AMB_OPCIONES {
+    display: grid;
+    grid-template-columns: 1.3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "SALAS"
+      "FUNCIONES"
+      "PELICULAS"
+      "RESERVAS";
+    grid-area: AMB_OPCIONES;
+    place-items: center;
+    font-size: x-large;
+    grid-gap: 4rem;
+  }
+  
+  .SALAS { grid-area: SALAS; }
+  
+  .FUNCIONES { grid-area: FUNCIONES; }
+  
+  .PELICULAS { grid-area: PELICULAS; }
+  
+  .RESERVAS { grid-area: RESERVAS; }
+  

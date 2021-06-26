@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from './components/Home/index.vue'
+import AdminHome from './components/AdminHome/index.vue'
 import Login from './components/LogIn/index.vue'
 import Register from './components/Register/index.vue'
 import PeliculaSeleccionada from './components/PeliculaSeleccionada/index.vue'
@@ -21,6 +22,7 @@ export const router = new VueRouter({
     routes : [
         { path: '/', redirect:'/home' },
         { path: '/home', component: Home }, 
+        { path: '/adminHome', component: AdminHome }, 
         { path: '/login', component: Login },
         { path: '/register', component: Register },
         { path: '/peliculaSeleccionada', component: PeliculaSeleccionada },

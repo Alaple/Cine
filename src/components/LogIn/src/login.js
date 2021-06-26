@@ -23,9 +23,14 @@ export default {
       async logInToPage(email,password){
           try{
             let respuesta = await this.axios.post(this.urlLogIn,{email: email,clave: password});
-            store.state.token = respuesta.data;
+            console.log(respuesta)
+            store.state.token = respuesta.data.token;
             this.error=false;
-            router.push('/home');
+            if(!respuesta.data.user.esAdministrador){
+              router.push('/home');
+            }else{
+              router.push('/adminHome');
+            }
           }catch(err){
             console.log("LogIn Error: ", err);
             this.error=true;
