@@ -42,7 +42,7 @@ export default {
 
   },
   mounted () {
-
+    console.log(this.$store.state.idFuncionSeleccionada);
   },
   methods: {
     async getReservas() {
