@@ -2,26 +2,26 @@
     <div class="TituloNombre adjustPosition">NOMBRE</div>
     <div class="TittuloApellido adjustPosition">APELLIDO</div>
     <div class="TextoNombre adjustInput">
-        <input v-model="nombre" class="adjutsInputWidth" type="text" name="Nombre" id="">
+        <input v-model="nombre" class="adjutsInputWidth" type="text" name="Nombre" id="nombre">
     </div>
     <div class="TextoApelldio adjustInput">
-        <input v-model="apellido" class="adjutsInputWidth" type="text" name="Apellido" id="">
+        <input v-model="apellido" class="adjutsInputWidth" type="text" name="Apellido" id="apellido">
     </div>
     <div class="TituloMail adjustPosition">EMAIL</div>
     <div class="TextoMail adjustInput">
-        <input v-model="email" class="adjutsInputWidth" type="email" name="email" id="">
+        <input v-model="email" class="adjutsInputWidth" type="email" name="email" id="email">
     </div>
     <div class="TituloClave adjustPosition">CONTRASEÑA</div>
     <div class="TitucloConfirmar adjustPosition">CONFIRMÁ CONTRASEÑA</div>
     <div class="TextoClave adjustInput">
-        <input v-model="clave1" class="adjutsInputWidth" type="password" name="" id="">
+        <input v-model="clave1" class="adjutsInputWidth" type="password" name="" id="clave1">
     </div>
     <div class="TextoConfirmar adjustInput">
-        <input v-model="clave2" class="adjutsInputWidth" type="password" name="" id="">
+        <input v-model="clave2" class="adjutsInputWidth" type="password" name="" id="clave2">
     </div>
     <div class="TituloFecha adjustPosition">FECHA DE NACIMIENTO</div>
     <div class="TextoFehca adjustInput">
-        <input v-model="fechaNacimiento" class="adjutsInputWidth" type="date" name="" id="">
+        <input v-model="fechaNacimiento" class="adjutsInputWidth" type="date" name="" id="fechaNacimiento">
     </div>
     <div class="BotonRegistro adjustInput">
         <input type="button" value="REGISTRARSE" @click="registerUser({nombre:nombre, apellido:apellido, email:email, clave:clave1,fechaNacimiento:fechaNacimiento,esAdministrador:false},clave1,clave2)">
@@ -29,4 +29,5 @@
     <div class="ImagenPromocional">
         <img src="https://www.cinemarkhoyts.com.ar/images/reapertura-info-banner.jpg" alt="">
     </div>
+    <h4 v-if="error" class="alert" style="grid-column: 2;grid-row: 19; color: #842029;text-align: left;">La calve no conincide</h4>
   </div>

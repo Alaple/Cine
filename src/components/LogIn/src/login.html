@@ -2,15 +2,18 @@
     <div class="IngresarCuenta" style="margin-top: auto;">INGRESÁ TU CUENTA</div>
     <div class="TituloUsuario adjustPosition">USUARIO</div>
     <div class="TextoUsuario adjustPosition">
-        <input v-model="email" type="text" name="" id="" placeholder="INGRESAR EMAIL">
+        <input v-model="email" type="text" name="" id="email" placeholder="INGRESAR EMAIL">
     </div>
     <div class="TituloClave adjustPosition">CONTRASEÑA</div>
     <div class="TextClave adjustPosition">
-        <input v-model="clave" type="password" name="" id="" placeholder="INGRESAR CONTRASEÑA">
+        <input v-model="clave" type="password" name="" id="clave" placeholder="INGRESAR CONTRASEÑA">
     </div>
-    <div class="BotonLogIn"><input type="button" value="LogIn" @click="logInToPage(email,clave)"></div>
+    <div class="BotonLogIn">
+        <input type="button" value="LogIn" @click="logInToPage(email,clave)">
+    </div>
     <div class="Registrarse"><a href="register">Registrate</a></div>
+    <h4 v-if="error" class="alert alert-danger" style="grid-column: 2;grid-row: 15;background-color: null;">No se encontraron datos</h4>
     <div class="ImagenPromocional">
         <img src="https://www.cinemarkhoyts.com.ar/images/reapertura-info-banner.jpg" alt="">
     </div>
-  </div>
+</div>
