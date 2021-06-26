@@ -7,6 +7,8 @@ export default {
     props: [],
     data () {
       return {
+        email:'',
+        clave:'',
         urlLogIn: 'http://localhost:3000/api/usuarios/login'
       }
     },
@@ -19,7 +21,7 @@ export default {
     methods: {
       async logInToPage(email,password){
           try{
-            let respuesta = await this.axios(this.urlLogIn,{email: email,clave: password});
+            let respuesta = await this.axios.post(this.urlLogIn,{email: email,clave: password});
             store.state.token = respuesta.data;
             router.push('/home');
           }catch(err){

@@ -1,7 +1,7 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 0.5fr 1.7fr 0.1fr 1.4fr 0.8fr 2.4fr 0.5fr;
-    grid-template-rows: 0.5fr 1fr 0.1fr 0.1fr 0.3fr 0.1fr 0.2fr 0.2fr 0.2fr 0.1fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.1fr 0.3fr 3fr 1fr;
+    grid-template-columns: 0.5fr 1.7fr 1.1fr 1.4fr 0.8fr 2.4fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 0.1fr 0.1fr 0.3fr 0.1fr 0.2fr 0.2fr 0.2fr 0.1fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 1fr 0.3fr 3fr 1fr;
     gap: 0px 0px;
     grid-template-areas:
       ". . . . . . ."
@@ -33,6 +33,10 @@
 
     .adjustInput{
         text-align: left;
+    }
+
+    .adjutsInputWidth{
+      width: -webkit-fill-available;
     }
 
   .TituloNombre { grid-area: TituloNombre; }
