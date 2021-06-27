@@ -8,7 +8,8 @@ export default new Vuex.Store(
     state: {
       idPelicula: '',
       idFuncionSeleccionada: '',
-      token:''
+      token:'',
+      userid: ''
     }, 
     actions: {
 

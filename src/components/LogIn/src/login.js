@@ -25,6 +25,7 @@ export default {
             let respuesta = await this.axios.post(this.urlLogIn,{email: email,clave: password});
             console.log(respuesta)
             store.state.token = respuesta.data.token;
+            store.state.userid = respuesta.data.user._id;
             this.error=false;
             if(!respuesta.data.user.esAdministrador){
               router.push('/home');
