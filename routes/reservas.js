@@ -42,7 +42,7 @@ router.get('/reserva/:nroReserva', async (req, res) => {
 
 /* POST reserva */
 router.post('/', async (req, res) => {
-    const funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
+    let funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
     const schema = joi.object({
         _idFuncion: joi.string().alphanum().required(),
         _idUsuario: joi.string().alphanum().required(),
@@ -63,14 +63,16 @@ router.post('/', async (req, res) => {
         let reserva = req.body;
         reserva.nroReserva = await dataReservas.getNewNroReserva();
         reserva = await dataReservas.addReserva(reserva);
-        // TODO Actualizar la cant disponibles de la funcion restando las reservadas.
+        // Actualizar la cant disponibles de la funcion restando las reservadas.
+        funcionReserva.cantLugaresDisponibles -= reserva.ops[0].cantidadEntradas;
+        await dataFunciones.updateFuncion(funcionReserva);
         res.json(reserva);
     }
 });
 
 /* PUT reserva por id */
 router.put('/:id', async (req, res) => {
-    const funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
+    let funcionReserva = await dataFunciones.getFuncion(req.body._idFuncion);
     const reservaOriginal = await dataReservas.getReserva(req.params.id);
     const maxLugaresDisponibles = funcionReserva.cantLugaresDisponibles + reservaOriginal.cantidadEntradas;
     const schema = joi.object({
@@ -95,7 +97,9 @@ router.put('/:id', async (req, res) => {
         let reserva = req.body;
         reserva._id = req.params.id;
         await dataReservas.updateReserva(reserva);
-    // TODO Actualizar la cant disponibles de la funcion restando las reservadas.
+        // Actualizar la cant disponibles de la funcion restando las reservadas.
+        funcionReserva.cantLugaresDisponibles = funcionReserva.cantLugaresDisponibles - (reserva.cantidadEntradas - reservaOriginal.cantidadEntradas);            
+        await dataFunciones.updateFuncion(funcionReserva);
         res.json(reserva);
     }
 });
