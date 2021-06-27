@@ -11,6 +11,8 @@
     "dev": "nodemon app.js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/vue-fontawesome": "^2.0.2",
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
