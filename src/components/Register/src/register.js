@@ -6,6 +6,8 @@ export default {
     props: [],
     data () {
       return {
+        formState : {},
+        lengthMin : 3,
         nombre:'',
         apellido:'',
         clave1:'',
@@ -28,6 +30,7 @@ export default {
             if(clave1!=clave2) throw new Error("La clave no coincide")
             await this.axios.post(this.urlRegister,user);
             this.error=false;
+            alert("REGISTRO EXITOSO")
             router.push('/login');
           }catch(err){
             console.log("Register Error: ", err.message);

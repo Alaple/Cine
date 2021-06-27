@@ -1,33 +1,101 @@
+
 <div class="grid-container">
     <div class="TituloNombre adjustPosition">NOMBRE</div>
     <div class="TittuloApellido adjustPosition">APELLIDO</div>
     <div class="TextoNombre adjustInput">
-        <input v-model="nombre" class="adjutsInputWidth" type="text" name="Nombre" id="nombre">
+        <vue-form :state="formState">
+            <validate>
+                <input 
+                type="text" 
+                id="nombre" 
+                name="nombre" 
+                class="form-control"
+                autocomplete="off"
+                v-model.trim="nombre"
+                required
+                :minlength="lengthMin"
+                no-espacios
+                >
+                <!-- mensajes de validación -->
+                <field-messages name="nombre" show="$dirty">
+                <div slot="required" style="color: #842029;">Campo requerido</div>            
+                <div slot="no-espacios" style="color: #842029;">
+                    No se permiten espacios
+                </div>            
+                <div slot="minlength" style="color: #842029;">
+                    Requiere como mínimo {{ lengthMin }} caracteres
+                </div>                     
+                </field-messages>
+    
+            </validate>
+        </vue-form>
     </div>
     <div class="TextoApelldio adjustInput">
-        <input v-model="apellido" class="adjutsInputWidth" type="text" name="Apellido" id="apellido">
+        <vue-form :state="formState">
+            <validate>
+                <input 
+                type="text" 
+                id="apellido" 
+                name="apellido" 
+                class="form-control"
+                autocomplete="off"
+                v-model.trim="apellido"
+                required
+                :minlength="lengthMin"
+                no-espacios
+                >
+                <!-- mensajes de validación -->
+                <field-messages name="apellido" show="$dirty">
+                    <div slot="required" style="color: #842029;">Campo requerido</div>            
+                    <div slot="no-espacios" style="color: #842029;">
+                        No se permiten espacios
+                    </div>            
+                    <div slot="minlength" style="color: #842029;">
+                        Requiere como mínimo {{ lengthMin }} caracteres
+                    </div>                     
+                </field-messages>
+            </validate>
+        </vue-form>
     </div>
     <div class="TituloMail adjustPosition">EMAIL</div>
     <div class="TextoMail adjustInput">
-        <input v-model="email" class="adjutsInputWidth" type="email" name="email" id="email">
+        <vue-form :state="formState">
+            <validate>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  class="form-control"
+                  autocomplete="off"
+                  v-model.trim="email"
+                  required
+                >
+                <!-- mensajes de validación -->
+                <field-messages name="email" show="$dirty">
+                  <div slot="required" style="color: #842029;" >Campo requerido</div>            
+                  <div slot="email"style="color: #842029;" >Email no válido</div>            
+                </field-messages>
+      
+            </validate>
+        </vue-form>
     </div>
     <div class="TituloClave adjustPosition">CONTRASEÑA</div>
     <div class="TitucloConfirmar adjustPosition">CONFIRMÁ CONTRASEÑA</div>
     <div class="TextoClave adjustInput">
-        <input v-model="clave1" class="adjutsInputWidth" type="password" name="" id="clave1">
+        <input v-model="clave1" class="form-control adjutsInputWidth" type="password" name="" id="clave1">
     </div>
     <div class="TextoConfirmar adjustInput">
-        <input v-model="clave2" class="adjutsInputWidth" type="password" name="" id="clave2">
+        <input v-model="clave2" class="form-control adjutsInputWidth" type="password" name="" id="clave2">
     </div>
     <div class="TituloFecha adjustPosition">FECHA DE NACIMIENTO</div>
     <div class="TextoFehca adjustInput">
-        <input v-model="fechaNacimiento" class="adjutsInputWidth" type="date" name="" id="fechaNacimiento">
+        <input v-model="fechaNacimiento" class="form-control adjutsInputWidth" type="date" name="" id="fechaNacimiento">
     </div>
     <div class="BotonRegistro adjustInput">
         <input type="button" value="REGISTRARSE" @click="registerUser({nombre:nombre, apellido:apellido, email:email, clave:clave1,fechaNacimiento:fechaNacimiento,esAdministrador:false},clave1,clave2)">
     </div>
     <div class="ImagenPromocional">
-        <img src="https://www.cinemarkhoyts.com.ar/images/reapertura-info-banner.jpg" alt="">
+        <img src="https://www.promociones.com.ar/wp-content/uploads/2019/02/cine-350x230.png" alt="">
     </div>
     <h4 v-if="error" class="alert" style="grid-column: 2;grid-row: 19; color: #842029;text-align: left;">La calve no conincide</h4>
   </div>
