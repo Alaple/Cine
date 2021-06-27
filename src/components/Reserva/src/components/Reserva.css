@@ -15,12 +15,13 @@ grid-template-areas:
 }
 
 .Ticket {
+background-color: white;
 text-align: left; /* Agregao manual */
 border: 2px solid black; /* Agregao manual */
 padding: 5px; /* Agregao manual */
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+grid-template-rows: 0fr 0fr 0fr 0fr 0fr 0fr 0fr 0fr 0fr 0.1fr 0fr;
 gap: 15px 0px;
 grid-auto-flow: row;
 grid-template-areas:
@@ -86,7 +87,7 @@ grid-area: Ticket;
 text-align: left; /* Agregao manual */
 display: grid;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 1fr 1fr 1fr 0.8fr 0.5fr 1fr 1fr 0.5fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 0.1fr 1fr 1fr;
 gap: 0px 30px;
 grid-auto-flow: row;
 grid-template-areas:

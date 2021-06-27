@@ -1,14 +1,14 @@
 
-<section class="src-components-pelicula-funciones">
+<section class="src-components-pelicula-funciones" style="grid-template-columns: 25rem 20rem 30rem 20rem; display: grid;">
   <!-- PELICULA -->
-  <div class="container container-pelicula">
+  <div class="container container-pelicula" style="grid-column: 2;">
     <h2>{{ pelicula.nombre }}</h2>
     <img alt="Poster" :src="pelicula.url_imagen">
     <p>Seleccioná un horario para reservar</p>
   </div>
   
   <!-- FUNCIONES -->
-  <div class="container">
+  <div class="container" style="grid-column: 3;">
     <div class="funciones-horarios" v-for="(funcion, index) in funcionesDiasYHorario" :key="index">
       <h3>{{ getDia(funcion.dia) }}</h3>
       <button 
