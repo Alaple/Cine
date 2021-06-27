@@ -4,25 +4,25 @@
     <div v-if="mostrarTicket" class="Ticket">
       <div class="TICKET">TICKET</div>
       <div class="Numero">
-        NÚMERO: {{ reserva.nroReserva.$numberInt}}
+        NÚMERO: {{ reserva.nroReserva}}
       </div>
       <div class="Pelicula">
-        PELÍCULA: A Quiet Place
+        {{ pelicula.nombre }}
       </div>
       <div class="Dia">
-        DIA: MIERCOLES
+        DIA: {{getDia(funcion.diaHorario)}}
       </div>
       <div class="Hora">
-        HORA: 12:30
+        HORA: {{getHora(funcion.diaHorario)}}
       </div>
       <div class="Sala">
-        SALA: A
+        SALA: {{ sala.descripcion }}
       </div>
       <div class="CantidadEntradas">
-        CANTIDAD DE ENTRADAS: {{ reserva.cantidadEntradas.$numberInt}}
+        CANTIDAD DE ENTRADAS: {{ reserva.cantidadEntradas}}
       </div>
       <div class="ValorTotal">
-        VALOR TOTAL: ${{ reserva.valorTotal.$numberDouble}}
+        VALOR TOTAL: ${{ reserva.valorTotal}}
       </div>
       <div class="MedioPago">
         MEDIO DE PAGO: {{ reserva.medioPago}}
@@ -30,32 +30,67 @@
     </div>
     <div class="Datos">
       <div class="Nombre">
-        <h2>A Quiet Place</h2>        
+        <h2>{{ pelicula.nombre }}</h2>        
       </div>
       <div class="Portada">
-        <img alt="Poster" src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/557.jpg">
+        <img alt="Poster" :src="pelicula.url_imagen">
       </div>
       <div class="Funcion">
-        MIERCOLES 12:30 
+        {{new Date(funcion.diaHorario).toLocaleString()}}
       </div>
-      <div class="SELECCIONAR-PAGO">
-        SELECCIONAR MEDIO DE PAGO
-      </div>
-      <div class="Tarjeta">
-        <input type="radio" id="tarjeta" name="medioPago" value="tarjeta" checked>
-        <label for="tarjeta">Tarjeta</label>
-      </div>
-      <div class="MercadoPago">
-        <input type="radio" id="mercadoPago" name="medioPago" value="mercadoPago">
-        <label for="mercadoPago">MercadoPago</label>
-      </div>
-      <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS</div>
-      <div class="Input">
-        <input type="number" value="reserva.cantidadEntradas.$numberInt">
-      </div>
-      <div class="Reservar">
-        <button class="btn btn-primary" @click="mostrarTicket=true">Reservar</button>
-      </div>
+      <vue-form :state="formState" @submit.prevent="postFuncion()">
+
+        <validate tag="div">
+          <label for="medioPago">
+            <div class="SELECCIONAR-PAGO">
+              SELECCIONAR MEDIO DE PAGO
+            </div>
+          </label>
+          <div class="Tarjeta">
+            <label for="tarjeta">Tarjeta</label>
+            <input type="radio" id="tarjeta" name="medioPago" value="tarjeta" checked v-model="formData.medioPago">
+          </div>
+          <div class="MercadoPago">
+            <label for="mercadoPago">MercadoPago</label>
+            <input type="radio" id="mercadoPago" name="medioPago" value="mercadoPago" v-model="formData.medioPago">
+          </div>
+          <field-messages name="medioPago" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>            
+          </field-messages>
+        </validate>
+
+        <validate tag="div">
+          <label for="cantidadEntradas">
+            <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS</div>
+          </label>
+          <div class="Input">
+            <input 
+            type="number" 
+            id="cantidadEntradas"
+            name="cantidadEntradas"
+            class="form-control"
+            autocomplete="off"
+            v-model.number="formData.cantidadEntradas"
+            required
+            :min="cantEntradasMin"
+            :max="cantEntradasMax">
+          </div>
+          <field-messages name="cantidadEntradas" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>            
+            <div slot="min" class="alert alert-danger mt-1">La cantidad mínima es de {{cantEntradasMin}} entradas</div>            
+            <div slot="max" class="alert alert-danger mt-1">La cantidad máxima permitida es de {{cantEntradasMax}} entradas</div>  
+          </field-messages>
+        </validate>
+
+        <div class="Reservar">
+          <button 
+          class="btn btn-primary" 
+          :disabled="formState.$invalid" 
+          type="submit">
+            Reservar
+          </button>
+        </div>
+      </vue-form>
     </div>
   </div>
 </section>

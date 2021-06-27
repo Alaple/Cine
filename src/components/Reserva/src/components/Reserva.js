@@ -5,63 +5,110 @@ export default {
   props: [],
   data () {
     return {
-      reserva: {
-        "_id":{"$oid":"60bd224cbcdb5f2344176f8a"},
-        "_idFuncion":{"$oid":"60bbf109169271a0c1745223"},
-        "_idUsuario":{"$oid":"60bbedf8169271a0c1745220"},
-        "cantidadEntradas":{"$numberInt":"4"},
-        "nroReserva":{"$numberInt":"1"},
-        "valorTotal":{"$numberDouble":"1499.98"},
-        "medioPago":"Tarjeta"
-      },
-      funcion: {
-        "_id":{"$oid":"60bbf109169271a0c1745223"},
-        "diaHorario":{"$date":{"$numberLong":"1625167800000"}},
-        "_idPelicula":{"$oid":"60bbea67169271a0c174521f"},
-        "_idSala":{"$oid":"60bbef20169271a0c1745221"},
-        "cantLugaresDisponibles":{"$numberInt":"10"}
-      },
-      usuario: {
-        "_id":{"$oid":"60bbedf8169271a0c1745220"},
-        "nombre":"German",
-        "apellido":"Tegui",
-        "email":"german@tegui.com",
-        "fechaNacimiento":"",
-        "esAdministrador":false,
-        "clave":"pepe123"
-      },
-      mostrarTicket: false,
+      pelicula: {},
+      funcion: {},
+      reserva: {},
+      sala: {},
+      urlPeliculas: 'http://localhost:3000/api/peliculas/',
+      urlFunciones: 'http://localhost:3000/api/funciones/',
       urlReservas: 'http://localhost:3000/api/reservas/',
-      urlUsuarios: 'http://localhost:3000/api/usuarios/',
-      reservas: [],
-      usuarios: [],
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzkwNzQ1Y2JiYTQxNzA1YmMyNDAiLCJpYXQiOjE2MjM4ODYzMjUsImV4cCI6MTYyMzg5MzUyNX0.IU9hWKtH8MvmUY6jqSLjqVBC2ndpCWweMCFCt3byn3I'
+      urlSalas: 'http://localhost:3000/api/salas/',
+      formData: this.getInicialData(),
+      formState: {},
+      cantEntradasMin: 1,
+      cantEntradasMax: 0,
+      mostrarTicket: false,
     }
   },
   computed: {
 
   },
   mounted () {
-    console.log(this.$store.state.idFuncionSeleccionada);
+    this.getPelicula(this.$store.state.idPelicula);
+    this.getFuncion(this.$store.state.idFuncionSeleccionada);
   },
   methods: {
-    async getReservas() {
+    async getPelicula(id) {
       try {
-        let respuesta = await this.axios(this.urlReservas);
-        console.log('AXIOS GET RESERVAS', respuesta.data);
-        this.reservas = respuesta.data;
+        let respuesta = await this.axios(this.urlPeliculas + id);
+        this.pelicula = respuesta.data;
       } catch (error) {
         console.error(error);
       }
     },
-    async getUsuarios() {
+    async getFuncion(id) {
       try {
-        let respuesta = await this.axios(this.urlUsuarios, { headers: { Authorization: `Bearer ${this.token}` } });
-        console.log('AXIOS GET USUARIOS', respuesta.data);
-        this.usuarios = respuesta.data;
+        let respuesta = await this.axios(this.urlFunciones + id);
+        this.funcion = respuesta.data;
+        // Defino la cantidad de entradas disponibles de la funcion elegida
+        this.cantEntradasMax = this.funcion.cantLugaresDisponibles;
       } catch (error) {
         console.error(error);
       }
+    },
+    getInicialData() {
+      return {
+        _id: '',
+        _idFuncion: '',
+        _idUsuario: '',
+        cantidadEntradas: '',
+        nroReserva: '',
+        valorTotal: '',
+        medioPago: ''
+      }
+    },
+    async postFuncion() {
+      let reservaNueva = {
+        _idFuncion: this.funcion._id,
+        _idUsuario: this.$store.state.userid,
+        cantidadEntradas: this.formData.cantidadEntradas,
+        valorTotal: (this.$store.state.valorEntrada * this.formData.cantidadEntradas),
+        medioPago: this.formData.medioPago
+      }
+      try {
+        let respuesta = await this.axios.post(this.urlReservas, reservaNueva, {'content-type':'application/json'});
+        this.reserva  = respuesta.data.ops[0];
+        // Obtengo la sala elegida para mostrar el ticket
+        await this.getSala(this.funcion._idSala);
+        // Muestra el ticket completando los datos con la reserva generada
+        this.mostrarTicket = true;
+      } 
+      catch (error) {
+        console.error(error);
+      }
+    },
+    async getSala(id) {
+      try {
+        let respuesta = await this.axios(this.urlSalas + id);
+        this.sala = respuesta.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    getDia(diaHorario){
+      let fecha = new Date(diaHorario);
+      switch (fecha.getDay()) {
+        case 0:
+          return 'Domingo';
+        case 1:
+          return 'Lunes';
+        case 2:
+          return 'Martes';
+        case 3:
+          return 'Miercoles';
+        case 4:
+          return 'Jueves';
+        case 5:
+          return 'Viernes';
+        case 6:
+          return 'Sabado';
+        default:
+          return 'Dia invalido';
+      }
+    },
+    getHora(diaHorario) {    
+      let fecha = new Date(diaHorario);
+      return `${fecha.getHours()}:${fecha.getMinutes() < 10 ? '00' : fecha.getMinutes()}`
     },
   }
 }

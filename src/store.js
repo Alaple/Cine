@@ -9,7 +9,8 @@ export default new Vuex.Store(
       idPelicula: '',
       idFuncionSeleccionada: '',
       token:'',
-      userid: ''
+      userid: '',
+      valorEntrada: 650
     }, 
     actions: {
 

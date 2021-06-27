@@ -75,7 +75,6 @@ export default {
         else
         {
           var horarioActuales = this.funcionesDiasYHorario[pos].horarios;
-          console.log(horarioActuales);
           var nuevoHorarios = []
           horarioActuales.forEach(element => nuevoHorarios.push(element));
           nuevoHorarios.push({
