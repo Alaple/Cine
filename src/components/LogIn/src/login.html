@@ -1,19 +1,19 @@
 <div class="grid-container">
-    <div class="IngresarCuenta" style="margin-top: auto;">INGRESÁ TU CUENTA</div>
+    <div class="IngresarCuenta mb-2" style="margin-top: auto;">INGRESÁ A TU CUENTA</div>
     <div class="TituloUsuario adjustPosition">EMAIL</div>
-    <div class="TextoUsuario adjustPosition">
-        <input v-model="email" type="text" name="" id="email" placeholder="INGRESAR EMAIL">
+    <div class="TextoUsuario mb-2 adjustPosition">
+        <input v-model="email" type="text" name="" id="email" placeholder="Ingresar email">
     </div>
     <div class="TituloClave adjustPosition">CONTRASEÑA</div>
-    <div class="TextClave adjustPosition">
-        <input v-model="clave" type="password" name="" id="clave" placeholder="INGRESAR CONTRASEÑA">
+    <div class="TextClave mb-4 adjustPosition">
+        <input v-model="clave" type="password" name="" id="clave" placeholder="Ingresar contraseña">
     </div>
     <div class="BotonLogIn">
-        <input type="button" value="LogIn" @click="logInToPage(email,clave)">
+        <input type="button" class ="btn btn-dark" value="LOGIN" @click="logInToPage(email,clave)">
     </div>
-    <div class="Registrarse"><a href="register">Registrate</a></div>
+    <div class="Registrarse"><span>¿No tenés cuenta? </span><a href="register">Registrate</a></div>
     <h4 v-if="error" class="alert" style="grid-column: 2;grid-row: 15;color: #842029;">No se encontraron datos</h4>
     <div class="ImagenPromocional">
-        <img src="https://www.losgallegos.com.ar/wp-content/uploads/2021/04/Promo-Cine-3.png" alt="">
+        <img src="https://www.losgallegos.com.ar/wp-content/uploads/2021/04/Promo-Cine-3.png" alt="promoción-cine">
     </div>
 </div>

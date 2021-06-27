@@ -88,14 +88,14 @@
         <input v-model="clave2" class="form-control adjutsInputWidth" type="password" name="" id="clave2">
     </div>
     <div class="TituloFecha adjustPosition">FECHA DE NACIMIENTO</div>
-    <div class="TextoFehca adjustInput">
+    <div class="TextoFehca mb-2 adjustInput">
         <input v-model="fechaNacimiento" class="form-control adjutsInputWidth" type="date" name="" id="fechaNacimiento">
     </div>
     <div class="BotonRegistro adjustInput">
-        <input type="button" value="REGISTRARSE" @click="registerUser({nombre:nombre, apellido:apellido, email:email, clave:clave1,fechaNacimiento:fechaNacimiento,esAdministrador:false},clave1,clave2)">
+        <input type="button" class ="btn btn-dark" value="REGISTRARSE" @click="registerUser({nombre:nombre, apellido:apellido, email:email, clave:clave1,fechaNacimiento:fechaNacimiento,esAdministrador:false},clave1,clave2)">
     </div>
     <div class="ImagenPromocional">
         <img src="https://www.promociones.com.ar/wp-content/uploads/2019/02/cine-350x230.png" alt="">
     </div>
-    <h4 v-if="error" class="alert" style="grid-column: 2;grid-row: 19; color: #842029;text-align: left;">La calve no conincide</h4>
+    <h4 v-if="error" class="alert" style="grid-column: 2;grid-row: 19; color: #842029;text-align: left;">La contraseña no coincide</h4>
   </div>

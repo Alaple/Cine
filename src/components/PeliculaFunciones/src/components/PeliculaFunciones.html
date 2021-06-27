@@ -1,17 +1,23 @@
 
 <section class="src-components-pelicula-funciones">
   <!-- PELICULA -->
-  <h2>{{ pelicula.nombre }}</h2>
-  <img alt="Poster" :src="pelicula.url_imagen">
+  <div class="container container-pelicula">
+    <h2>{{ pelicula.nombre }}</h2>
+    <img alt="Poster" :src="pelicula.url_imagen">
+    <p>Seleccioná un horario para reservar</p>
+  </div>
+  
   <!-- FUNCIONES -->
-  <div v-for="(funcion, index) in funcionesDiasYHorario" :key="index">
-    <h3>{{ getDia(funcion.dia) }}</h3>
-    <button 
-    class="btn btn-secondary my-3 me-3" 
-    v-for="(horario, index) in funcion.horarios" 
-    :key="index"
-    @click="goToReserva(horario.funcion)">
-      {{ horario.hora }}
-    </button>
+  <div class="container">
+    <div class="funciones-horarios" v-for="(funcion, index) in funcionesDiasYHorario" :key="index">
+      <h3>{{ getDia(funcion.dia) }}</h3>
+      <button 
+      class="btn btn-secondary my-2 me-2" 
+      v-for="(horario, index) in funcion.horarios" 
+      :key="index"
+      @click="goToReserva(horario.funcion)">
+        {{ horario.hora }}
+      </button>
+    </div>
   </div>
 </section>

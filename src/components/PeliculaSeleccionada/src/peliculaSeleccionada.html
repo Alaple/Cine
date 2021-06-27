@@ -12,18 +12,18 @@
             <iframe width="420" height="315" style="grid-row: 2; grid-column: 2;"
                     :src="'https://www.youtube.com/embed/'+pelicula.url_trailer">
             </iframe>
-            <button style="grid-column: 2;grid-row: 3; align-self: center; justify-self: center;" @click="goToReserva()">
+            <button style="grid-column: 2;grid-row: 2; align-self: center; justify-self: center;" @click="goToReserva()">
                 RESERVAR
             </button>
         </div>
     </div>
     <div class="Texto">
         <div class="Descripcion">
-            <h3>Genero: {{pelicula.genero.toString()}}</h3>
-            <h3>Calificacion: {{pelicula.calificacion}}</h3>
-            <h3>Duracion: {{pelicula.duracion}} minutos</h3>
-            <h3>Director: {{pelicula.director}}</h3>
-            <h3>Actores: {{pelicula.actores.toString()}}</h3>
+            <h3><strong>Gnero</strong>: {{pelicula.genero.toString()}}</h3>
+            <h3><strong>Calificación</strong>: {{pelicula.calificacion}}</h3>
+            <h3><strong>Duración</strong>: {{pelicula.duracion}} minutos</h3>
+            <h3><strong>Director</strong>: {{pelicula.director}}</h3>
+            <h3><strong>Actores</strong>: {{pelicula.actores.toString()}}</h3>
             <br>
             <h3>{{pelicula.descripcion}}</h3>
         </div>

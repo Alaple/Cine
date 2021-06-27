@@ -4,7 +4,7 @@
         <div id="footer" class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h2>Comunicate con nosotros </h2>
+                    <h3>Comunicate con nosotros </h3>
                 </div>
             </div>
             <div class="row">
@@ -66,7 +66,7 @@ footer {
   color: white;
   text-align: center;
   padding-top: 5px;
-
+  margin-top: 3rem;
 }
 
 #footer{
@@ -74,12 +74,21 @@ footer {
   background-color: black;
   color: white;
   margin: 5px auto;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
-#footer h2{
+#footer h3{
   margin: 2px;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
+  font-family: 'convergence', sans-serif;
+}
+
+#footer h3{
+  color: #d6f789;
+  font-size: 38px;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0px 0px 1px lightgreen;
 }
 
 #footer a{
@@ -100,28 +109,17 @@ footer {
   color: #25D366;
 }
 
-#footer a:hover {
-  color: lightgreen;
-}
-
 #footer p{
   text-align: center;
   padding: 5px;
   color: white;
   font-size: 18px;
   margin: 5px;
+  font-family: 'Nunito', sans-serif;
 }
 
 #footer ul{
   text-align: center;
-}
-
-#footer h2{
-  color: #d6f789;
-  font-size: 45px;
-  text-align: center;
-  font-weight: 600;
-  text-shadow: 0px 0px 1px lightgreen;
 }
 
 .letra-distinta{

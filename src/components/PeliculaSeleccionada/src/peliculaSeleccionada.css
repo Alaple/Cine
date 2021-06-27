@@ -19,15 +19,21 @@ button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 0px 0;
     border: none;
     cursor: pointer;
-    width: 95%;
+    width: 50%;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
 }
 
     button:hover {
         opacity: 0.8;
     }
+
+h3{
+    font-size: 22px;
+}
 
 .cancelbtn {
     width: auto;
@@ -113,8 +119,11 @@ span.psw {
 
 .Descripcion {
     grid-area: Descripcion;
+    font-family: 'nunito', sans-serif;
 }
 
 .Titulo {
     grid-area: Titulo;
+    font-family: 'Convergence', sans-serif;
+    margin-left: 8%;
 }

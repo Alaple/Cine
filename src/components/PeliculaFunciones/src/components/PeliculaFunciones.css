@@ -5,3 +5,34 @@
 .btn{
 
 }
+
+h2{
+    font-family: 'Convergence', sans-serif;
+}
+
+h3{
+    font-family: 'nunito', sans-serif;
+}
+
+img{
+    margin-left: 10%;
+}
+
+p{
+    text-align:left;
+    padding-left: 2px;
+    color: green;
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 3rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+.btn{
+    font-family: 'nunito', sans-serif;
+}
+
+.funciones-horarios{
+    margin-top: 2rem;   
+}

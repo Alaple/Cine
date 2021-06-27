@@ -39,27 +39,54 @@
       width: -webkit-fill-available;
     }
 
-  .TituloNombre { grid-area: TituloNombre; }
+  .TituloNombre { 
+    grid-area: TituloNombre;
+    font-family: 'Convergence', sans-serif;
+   }
   
-  .TittuloApellido { grid-area: TittuloApellido; }
+  .TittuloApellido { 
+    grid-area: TittuloApellido;
+    font-family: 'Convergence', sans-serif;
+   }
   
-  .TextoNombre { grid-area: TextoNombre; }
+  .TextoNombre { 
+    grid-area: TextoNombre;
+    
+   }
   
-  .TextoApelldio { grid-area: TextoApelldio; }
+  .TextoApelldio { 
+    grid-area: TextoApelldio;
+
+   }
   
-  .TituloMail { grid-area: TituloMail; }
+  .TituloMail { 
+    grid-area: TituloMail;
+    font-family: 'Convergence', sans-serif;
+   }
   
-  .TextoMail { grid-area: TextoMail; }
+  .TextoMail { 
+    grid-area: TextoMail;
+
+   }
   
-  .TituloClave { grid-area: TituloClave; }
+  .TituloClave { 
+    grid-area: TituloClave;
+    font-family: 'Convergence', sans-serif;
+   }
   
-  .TitucloConfirmar { grid-area: TitucloConfirmar; }
+  .TitucloConfirmar { 
+    grid-area: TitucloConfirmar;
+    font-family: 'Convergence', sans-serif;
+   }
   
   .TextoClave { grid-area: TextoClave; }
   
   .TextoConfirmar { grid-area: TextoConfirmar; }
   
-  .TituloFecha { grid-area: TituloFecha; }
+  .TituloFecha { 
+    grid-area: TituloFecha;
+    font-family: 'Convergence', sans-serif;
+   }
   
   .TituloGenero { grid-area: TituloGenero; }
   
@@ -67,7 +94,12 @@
   
   .TextoGenero { grid-area: TextoGenero; }
   
-  .BotonRegistro { grid-area: BotonRegistro; }
+  .BotonRegistro { 
+    grid-area: BotonRegistro;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    text-align: end;
+   }
   
   .ImagenPromocional { grid-area: ImagenPromocional; }
   

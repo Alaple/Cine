@@ -38,29 +38,55 @@ grid-template-areas:
 grid-area: Ticket;
 }
 
-.TICKET { grid-area: TICKET; }
+.TICKET { 
+    grid-area: TICKET;
+    font-family: 'Convergence', sans-serif;
+ }
 
-.Numero { grid-area: Numero; }
+.Numero { grid-area: Numero;
+    font-family: 'Nunito', sans-serif;
+}
 
-.Pelicula { grid-area: Pelicula; }
+.Pelicula { 
+    grid-area: Pelicula;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.Dia { grid-area: Dia; }
+.Dia { 
+    grid-area: Dia;
+    font-family: 'Nunito', sans-serif;
+}
 
-.Hora { grid-area: Hora; }
+.Hora { 
+    grid-area: Hora;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.Sala { grid-area: Sala; }
+.Sala { 
+    grid-area: Sala;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.CantidadEntradas { grid-area: CantidadEntradas; }
+.CantidadEntradas { 
+    grid-area: CantidadEntradas;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.ValorTotal { grid-area: ValorTotal; }
+.ValorTotal { 
+    grid-area: ValorTotal;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.MedioPago { grid-area: MedioPago; }
+.MedioPago { 
+    grid-area: MedioPago;
+    font-family: 'Nunito', sans-serif;
+ }
 
 .Datos {
 text-align: left; /* Agregao manual */
 display: grid;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr 0.8fr 0.5fr 1fr 1fr 0.5fr 1fr 1fr 1fr;
 gap: 0px 30px;
 grid-auto-flow: row;
 grid-template-areas:
@@ -78,20 +104,41 @@ grid-template-areas:
 grid-area: Datos;
 }
 
-.Nombre { grid-area: Nombre; }
+.Nombre { grid-area: Nombre;
+    font-family: 'Nunito', sans-serif;
+}
 
 .Portada { grid-area: Portada; }
 
-.Funcion { grid-area: Funcion; }
+.Funcion { 
+    grid-area: Funcion;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.SELECCIONAR-PAGO { grid-area: SELECCIONAR-PAGO; }
+.SELECCIONAR-PAGO { 
+    grid-area: SELECCIONAR-PAGO;
+    font-family: 'Nunito', sans-serif;
+}
 
-.Tarjeta { grid-area: Tarjeta; }
+.Tarjeta { 
+    grid-area: Tarjeta;
+    font-family: 'Nunito', sans-serif;
+}
 
-.MercadoPago { grid-area: MercadoPago; }
+.MercadoPago { 
+    grid-area: MercadoPago;
+    font-family: 'Nunito', sans-serif;
+ }
 
-.InputCantidadEntradas { grid-area: InputCantidadEntradas; }
+.InputCantidadEntradas { 
+    grid-area: InputCantidadEntradas;
+    font-family: 'Nunito', sans-serif;
+}
 
 .Input { grid-area: Input; }
 
-.Reservar { grid-area: Reservar; }
+.Reservar { 
+    grid-area: Reservar;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+}

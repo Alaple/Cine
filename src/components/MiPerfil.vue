@@ -78,7 +78,7 @@
 
                 <div class="row">
                   <div class="col-sm-12">
-                    <a class="btn btn-info" target="__blank" href="#">Editar</a>
+                    <a class="btn boton-editar btn-dark" target="__blank" href="#">Editar</a>
                   </div>
                 </div>
               </div>
@@ -168,6 +168,8 @@
 </script>
 
 <style scoped lang="css">
+
+
 h2 {
   font: bold 20px/2 Sans-Serif;
   background-color: #2bc8ac;
@@ -176,20 +178,41 @@ h2 {
   padding: 0 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Convergence', sans-serif;
 }
 
 h1 {
   margin-top: 1.5%;
+  margin-left: 1.6%;
   font: bold 20px/2 Sans-Serif;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Convergence', sans-serif;
 }
 
-th, td {
+th {
+    font-size: 15px;
     text-align: center;
+    font-family: 'nunito', sans-serif;
 }
+
+td {
+    font-size: 12px;
+    text-align: center;
+    font-family: 'nunito', sans-serif;
+}
+
 
 img {
     margin: 20%;
+}
+
+.boton-editar{
+  font-family: 'Orbitron', sans-serif;  
+}
+
+.card-body h6{
+  font-family: 'nunito', sans-serif;
+  font-weight: bold;
 }
 </style>
