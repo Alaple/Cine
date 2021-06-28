@@ -28,7 +28,12 @@ export default {
         }
       },
       goToReserva(){
-        router.push('/peliculaFunciones');
+        if (this.$store.state.userid) {
+          router.push('/peliculaFunciones');
+        } else 
+        {
+          router.push('/login');
+        }        
       }
     }
   }

@@ -60,7 +60,7 @@ span.psw {
     height: auto;
 }
 
-.editorial-grid img:hover {
+.editorial-hover img:hover {
     transform: scale(1.4);
     transition: 1s;
 }

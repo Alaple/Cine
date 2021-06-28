@@ -46,13 +46,21 @@
               SELECCIONAR MEDIO DE PAGO
             </div>
           </label>
+          <div>
+            <label for="efectivo">Efectivo</label>
+            <input type="radio" id="efectivo" name="medioPago" value="Efectivo" checked v-model="formData.medioPago">
+          </div>
+          <div>
+            <label for="debito">Débito</label>
+            <input type="radio" id="debito" name="medioPago" value="debito" checked v-model="formData.medioPago">
+          </div>
           <div class="Tarjeta">
             <label for="tarjeta">Tarjeta</label>
             <input type="radio" id="tarjeta" name="medioPago" value="tarjeta" checked v-model="formData.medioPago">
           </div>
           <div class="MercadoPago">
             <label for="mercadoPago">MercadoPago</label>
-            <input type="radio" id="mercadoPago" name="medioPago" value="mercadoPago" v-model="formData.medioPago">
+            <input type="radio" id="mercadoPago" name="medioPago" value="MercadoPago" v-model="formData.medioPago">
           </div>
           <field-messages name="medioPago" show="$dirty">
             <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>            
@@ -61,7 +69,7 @@
 
         <validate tag="div">
           <label for="cantidadEntradas">
-            <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS</div>
+            <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS (Valor ${{this.$store.state.valorEntrada}} c/u)</div>
           </label>
           <div class="Input">
             <input 
