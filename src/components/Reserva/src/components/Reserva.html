@@ -33,7 +33,7 @@
         <h2>{{ pelicula.nombre }}</h2>        
       </div>
       <div class="Portada">
-        <img alt="Poster" :src="pelicula.url_imagen">
+        <img alt="Poster" :src="pelicula.url_imagen" style="width: 300px; height: 400px; margin: 0;">
       </div>
       <div class="Funcion">
         {{new Date(funcion.diaHorario).toLocaleString()}}
