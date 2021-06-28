@@ -1,17 +1,19 @@
 <div>
     <div class="container">
         <h2>Peliculas</h2>
-        <div class="editorial-grid">
-            <img v-for="pelicula in peliculas" :src="pelicula.url_imagen" alt="" :value="pelicula._id" @click="savePelicula(pelicula._id)" />
-        </div>
+            <div class="editorial-grid">
+                <img v-for="pelicula in peliculas" :src="pelicula.url_imagen" alt="" :value="pelicula._id" @click="savePelicula(pelicula._id)" />
+            </div>
     </div>
-    <div class="container">
-        <h2>Proximamente</h2>
-        <div class="editorial-grid">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/520.jpg" alt="">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/534.jpg" alt="">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/557.jpg" alt="">
-            <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/517.jpg" alt="">
-        </div>
-    </div>
+        <div class="container">
+            <h2>Proximamente</h2>
+         <div v-if="cargoData">   
+            <div class="editorial-grid">
+                <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/520.jpg" alt="">
+                <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/534.jpg" alt="">
+                <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/557.jpg" alt="">
+                <img src="https://static.cinemarkhoyts.com.ar/Images/ComingSoon/200x285/517.jpg" alt="">
+            </div>
+         </div>
+        </div> 
 </div>

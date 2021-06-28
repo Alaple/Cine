@@ -8,7 +8,8 @@ export default {
     data () {
       return {
         peliculas: [],
-        urlPelicula: 'http://localhost:3000/api/peliculas/'
+        urlPelicula: 'http://localhost:3000/api/peliculas/',
+        cargoData: false
       }
     },
     computed: {
@@ -22,6 +23,7 @@ export default {
         try {
           let respuesta = await this.axios(this.urlPelicula);
           this.peliculas = respuesta.data;
+          this.cargoData = true;
         } catch (error) {
           console.error(error);
         }

@@ -29,9 +29,16 @@
           </li> 
             <!-- opción ruta MiPerfil -->
           <li class="nav-item">
+          <div v-if="usuarios.length > 0">
             <router-link to="/miPerfil">
               <a class="nav-link" href="#">MiPerfil</a>
             </router-link>
+          </div>
+          <div v-else>  
+          <router-link to="/login">
+              <a class="nav-link" href="#">MiPerfil</a>
+          </router-link>
+          </div>
           </li>
         </ul>
       </div>
@@ -46,15 +53,24 @@
     name: 'src-componentes-navbar',
     props: [],
     mounted () {
-
+      this.getUsuariosID()
     },
     data () {
       return {
-
+        usuarios: []
       }
     },
     methods: {
-
+      async getUsuariosID() {
+      try {
+        let respuesta = await this.axios(`http://localhost:3000/api/usuarios/${this.userid}`, 
+        { headers: { Authorization: `Bearer ${this.token}` }});
+        this.usuarios = respuesta.data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+      
     },
     computed: {
 
