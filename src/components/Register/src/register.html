@@ -1,4 +1,3 @@
-
 <div class="grid-container">
     <div class="TituloNombre adjustPosition">NOMBRE</div>
     <div class="TittuloApellido adjustPosition">APELLIDO</div>
@@ -83,6 +82,7 @@
     <div class="TitucloConfirmar adjustPosition">CONFIRMÁ CONTRASEÑA</div>
     <div class="TextoClave adjustInput">
         <input v-model="clave1" class="form-control adjutsInputWidth" type="password" name="" id="clave1">
+        <span v-if="msg.clave1">{{msg.clave1}}</span> 
     </div>
     <div class="TextoConfirmar adjustInput">
         <input v-model="clave2" class="form-control adjutsInputWidth" type="password" name="" id="clave2">
