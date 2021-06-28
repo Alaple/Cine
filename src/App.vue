@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar :userId="this.$store.state.userid" />
     <router-view></router-view>
     <Footer />
   </div>
