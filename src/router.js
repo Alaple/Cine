@@ -9,6 +9,7 @@ import PeliculaSeleccionada from './components/PeliculaSeleccionada/index.vue'
 import PeliculaFunciones from './components/PeliculaFunciones/index.vue'
 import Reserva from './components/Reserva/index.vue'
 import MiPerfil from './components/MiPerfil.vue'
+import ABMPeliculas from './components/AMBPeliculas.vue'
 
 /* 
 import Peliculas from './components/Peliculas.vue'
@@ -30,6 +31,7 @@ export const router = new VueRouter({
         { path: '/peliculaFunciones', component: PeliculaFunciones },
         { path: '/reserva', component: Reserva },
         { path: '/miPerfil', component: MiPerfil },
+        { path: '/abmPeliculas', component: ABMPeliculas },
         /*
         { path: '/peliculas', component: Peliculas },
         { path: '/salas', component: Salas },
