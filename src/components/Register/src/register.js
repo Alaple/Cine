@@ -17,6 +17,7 @@ export default {
         clave1:'',
         clave2:'',
         msg: [],
+        showPassword: false
       }
     },
 

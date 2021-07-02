@@ -81,7 +81,8 @@
     <div class="TituloClave adjustPosition">CONTRASEÑA</div>
     <div class="TitucloConfirmar adjustPosition">CONFIRMÁ CONTRASEÑA</div>
     <div class="TextoClave adjustInput">
-        <input v-model="clave1" class="form-control adjutsInputWidth" type="password" name="" id="clave1">
+        <input v-model="clave1" class="form-control adjutsInputWidth" type="password" name="" id="clave1" v-bind:type="[showPassword ? 'text' : 'password']">
+        <i class="fa" :class="[showPassword ? 'fa-eye' : 'fa-eye-slash']" aria-hidden="true" @click="showPassword = !showPassword"></i>
         <span v-if="msg.clave1">{{msg.clave1}}</span> 
     </div>
     <div class="TextoConfirmar adjustInput">

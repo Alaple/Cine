@@ -103,3 +103,14 @@
   
   .ImagenPromocional { grid-area: ImagenPromocional; }
   
+  i {
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-block: -30px;
+  }
+
+  span {
+    display:block;
+    margin-top: 50px;
+  }
