@@ -12,9 +12,10 @@
     <div class="funciones-horarios" v-for="(funcion, index) in funcionesDiasYHorario" :key="index">
       <h3>{{ getDia(funcion.dia) }}</h3>
       <button 
-      class="btn btn-secondary my-2 me-2" 
+      :class="getButtonClass(horario.lugaresDisponibles)" 
       v-for="(horario, index) in funcion.horarios" 
       :key="index"
+      :disabled="horario.lugaresDisponibles > 0 ? false : true"
       @click="goToReserva(horario.funcion)">
         {{ horario.hora }}
       </button>

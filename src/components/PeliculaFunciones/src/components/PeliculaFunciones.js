@@ -4,7 +4,6 @@ export default {
   props: [],
   data () {
     return {
-      //idPelicula: '60bbea67169271a0c174521f',
       idPelicula: this.$store.state.idPelicula,
       pelicula: {},
       funciones: [],
@@ -25,7 +24,7 @@ export default {
       try {
         let respuesta = await this.axios(this.urlFunciones + 'pelicula/' + id);
         this.funciones = respuesta.data;
-        // Para actualizar el listado de dias y horas
+        // Actualiza el listado de dias y horas
         this.calcularFuncionesDiasYHorarios();
       } catch (error) {
         console.error(error);
@@ -68,6 +67,7 @@ export default {
             dia: fecha.getDay(),
             horarios: [{
               hora: this.getHora(fecha),
+              lugaresDisponibles: funcion.cantLugaresDisponibles,
               funcion: funcion._id
             }]
           })          
@@ -79,19 +79,29 @@ export default {
           horarioActuales.forEach(element => nuevoHorarios.push(element));
           nuevoHorarios.push({
             hora: this.getHora(fecha),
+            lugaresDisponibles: funcion.cantLugaresDisponibles,
             funcion: funcion._id
           });
           this.funcionesDiasYHorario[pos].horarios = nuevoHorarios;
         }
       }
     },
-    getHora(fecha) {      
+    getHora(fecha) {
+      // Devuelve formato: HH:MM
       return `${fecha.getHours()}:${fecha.getMinutes() < 10 ? '00' : fecha.getMinutes()}`
     },
     goToReserva(idFuncion) {
       this.$store.state.idFuncionSeleccionada = idFuncion;
       this.$router.push('/reserva');
-    }
+    },
+    getButtonClass(cantLugares) {
+      return [
+          'btn',
+          cantLugares > 0 ? 'btn-success' : 'btn-secondary',
+          'my-2',
+          'me-2'
+      ]
+    },
   }
 }
 
