@@ -76,11 +76,12 @@
                   <hr />
                   <br />
 
-                  <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-12">
                       <a class="btn boton-editar btn-dark" target="__blank" href="#">Editar</a>
                     </div>
-                  </div>
+                  </div> -->
+                  
                 </div>
               </div>
             </div>
@@ -105,7 +106,7 @@
                         <td>{{ reserva._idFuncion }}</td>
                         <td>{{ reserva.cantidadEntradas }}</td>
                         <td>{{ reserva.medioPago }}</td>
-                        <td>{{ agregarSignoPesos(reserva.valorTotal) }}</td>
+                        <td>{{ reserva.valorTotal | moneda}}</td>
                       </tr>
                     </table>
                   </div>
@@ -121,13 +122,16 @@
 
 <script lang="js">
 
-  import filters from "../filters";
-  import store from "../store.js"
+ import store from "../store.js"
 
   export default  {
     name: 'mi-perfil',
     props: [],
-    mixins: [filters],
+    filters: {
+      moneda: function (value) {
+      return "$" + value.toFixed().toLocaleString();
+      }
+    },
     data () {
       return {
         usuarios: [],

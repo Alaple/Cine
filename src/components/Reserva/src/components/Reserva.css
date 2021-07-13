@@ -1,5 +1,4 @@
 .src-components-reserva {
-
 }
 
 .container {
@@ -119,6 +118,8 @@ grid-area: Datos;
 .SELECCIONAR-PAGO { 
     grid-area: SELECCIONAR-PAGO;
     font-family: 'Nunito', sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .Tarjeta { 
@@ -129,6 +130,7 @@ grid-area: Datos;
 .MercadoPago { 
     grid-area: MercadoPago;
     font-family: 'Nunito', sans-serif;
+    margin-bottom: 1rem;
  }
 
 .InputCantidadEntradas { 
@@ -142,4 +144,5 @@ grid-area: Datos;
     grid-area: Reservar;
     font-family: 'Orbitron', sans-serif;
     font-weight: 600;
+    margin-top: 1rem;
 }

@@ -1,10 +1,12 @@
 import { router } from "../../../router";
 import store from "../../../store";
+import { errorAlertMixin } from "../../../errorAlertMixin"
 
 export default {
     name: 'src-components-home',
     components: {},
     props: [],
+    mixins: [errorAlertMixin],
     data () {
       return {
         email:'',
@@ -34,6 +36,7 @@ export default {
             }
           }catch(err){
             console.log("LogIn Error: ", err);
+            this.alertaError('Los datos ingresados son incorrectos')
             this.error=true;
           }
       }
