@@ -21,7 +21,9 @@ export default {
     }
   },
   computed: {
-
+    mostrarValorTotal(){
+      return this.formData.cantidadEntradas * this.$store.state.valorEntrada
+    }
   },
   mounted () {
     this.getPelicula(this.$store.state.idPelicula);

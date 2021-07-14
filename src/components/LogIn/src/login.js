@@ -1,5 +1,5 @@
 import { router } from "../../../router";
-import store from "../../../store";
+//import store from "../../../store";
 import { errorAlertMixin } from "../../../errorAlertMixin"
 
 export default {
@@ -26,8 +26,10 @@ export default {
           try{
             let respuesta = await this.axios.post(this.urlLogIn,{email: email,clave: password});
             console.log(respuesta)
-            store.state.token = respuesta.data.token;
-            store.state.userid = respuesta.data.user._id;
+            //store.state.token = respuesta.data.token;
+            //store.state.userid = respuesta.data.user._id;            
+            this.$store.dispatch('setToken', respuesta.data.token);
+            this.$store.dispatch('setUserId', respuesta.data.user._id);
             this.error=false;
             if(!respuesta.data.user.esAdministrador){
               router.push('/home');
